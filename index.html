@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AISHA Shopping Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="path_to_aisha_logo.png" alt="AISHA Logo" class="logo">
+            <div id="cartTotal">Total: $0.00</div>
+            <div class="header-buttons">
+                <button onclick="togglePanel('mapPanel')">Store Map</button>
+                <button onclick="togglePanel('cartPanel')">Your Cart</button>
+            </div>
+        </header>
+        <main>
+            <div class="aisha-container">
+                <video id="aishaVideo" class="aisha">
+                    <source src="videos\Animate from audio project.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <button id="playButton" class="play-button">Play Video</button>
+            </div>
+            <div class="info-panel" id="infoPanel"></div>
+        </main>
+        <footer>
+            <button onclick="proceedToCheckout()">Proceed to Checkout</button>
+            <button onclick="activateVoice()" class="ask-aisha">Ask AISHA</button>
+        </footer>
+    </div>
+    <div id="mapPanel" class="panel">
+        <button class="close-panel" onclick="togglePanel('mapPanel')">×</button>
+        <img src="images\Supermarket map.jpg" alt="Store Map" class="store-map">
+    </div>
+    <div id="cartPanel" class="panel">
+        <button class="close-panel" onclick="togglePanel('cartPanel')">×</button>
+        <h2>Your Cart</h2>
+        <div id="cartItems"></div>
+    </div>
+    <div id="checkoutPanel" class="panel">
+        <button class="close-panel" onclick="togglePanel('checkoutPanel')">×</button>
+        <h2>Checkout</h2>
+        <div id="checkoutItems"></div>
+        <div id="checkoutTotal"></div>
+        <button onclick="completeCheckout()">Complete Purchase</button>
+    </div>
+    <div class="scanned-items" id="scannedItems"></div>
+    <script src="script.js"></script>
+</body>
+</html>

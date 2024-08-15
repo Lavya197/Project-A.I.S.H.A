@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    background-color: #001a2c;
+    color: #fff;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgba(0, 26, 44, 0.8);
+}
+
+.logo {
+    height: 40px;
+}
+
+.header-buttons button {
+    margin-left: 10px;
+}
+
+main {
+    display: flex;
+    flex-grow: 1;
+}
+
+.aisha-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.aisha {
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #00ffff;
+}
+
+.play-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(0, 255, 255, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    /* Make the button invisible but still functional */
+    opacity: 0;
+}
+
+
+.info-panel {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    border-left: 1px solid #00ffff;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: rgba(0, 26, 44, 0.8);
+}
+
+button {
+    background-color: rgba(0, 255, 255, 0.2);
+    color: #00ffff;
+    border: 1px solid #00ffff;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: rgba(0, 255, 255, 0.4);
+}
+
+.panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background-color: rgba(0, 26, 44, 0.9);
+    border: 1px solid #00ffff;
+    display: none;
+    border-radius: 15px;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.close-panel {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.store-map {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.scanned-items {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(0, 26, 44, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 300px;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.prompt {
+    background-color: rgba(0, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
