@@ -1,6 +1,5 @@
 let cartTotal = 0;
 let cartItems = [];
-let budget = 0;
 let currentStep = 0;
 let scanningStarted = false;
 
@@ -15,49 +14,24 @@ const steps = [
 
 document.addEventListener('DOMContentLoaded', (event) => {
     const video = document.getElementById('aishaVideo');
+    const playButton = document.getElementById('playButton');
     
-    // Remove the loop attribute
-    video.removeAttribute('loop');
-    
-    // Attempt to play the video
-    const playPromise = video.play();
+    playButton.addEventListener('click', () => {
+        if (video.paused) {
+            video.play();
+            playButton.textContent = 'Pause';
+        } else {
+            video.pause();
+            playButton.textContent = 'Play';
+        }
+    });
 
-    if (playPromise !== undefined) {
-        playPromise.then(_ => {
-            console.log("Video playback started successfully");
-            
-            // Add an event listener for when the video ends
-            video.addEventListener('ended', function() {
-                console.log("Video playback ended");
-                // Optionally, you can hide the video or show a placeholder image here
-                // video.style.display = 'none';
-                // or
-                // video.poster = 'path_to_placeholder_image.jpg';
-            });
-
-        }).catch(error => {
-            console.log("Video playback was prevented:", error);
-            
-            const playButton = document.createElement('button');
-            playButton.innerHTML = 'Play Video';
-            playButton.className = 'video-play-button';
-            video.parentNode.insertBefore(playButton, video.nextSibling);
-
-            playButton.addEventListener('click', () => {
-                video.play();
-                playButton.style.display = 'none';
-            });
-        });
-    }
+    video.addEventListener('ended', () => {
+        playButton.textContent = 'Replay';
+    });
 });
 
-function unmuteAisha() {
-    const video = document.getElementById('aishaVideo');
-    video.muted = false;
-}
-
 function activateVoice() {
-    unmuteAisha();
     if (currentStep < steps.length) {
         simulateConversation();
     } else {
@@ -67,15 +41,8 @@ function activateVoice() {
 
 function simulateConversation() {
     const infoPanel = document.getElementById('infoPanel');
-    const voiceIndicator = document.getElementById('voiceIndicator');
-    
-    voiceIndicator.style.display = 'block';
-    voiceIndicator.classList.add('listening-animation');
     
     setTimeout(() => {
-        voiceIndicator.style.display = 'none';
-        voiceIndicator.classList.remove('listening-animation');
-        
         const userPrompt = document.createElement('div');
         userPrompt.className = 'prompt';
         userPrompt.innerHTML = '<strong>You:</strong> ';
@@ -96,7 +63,7 @@ function aishaResponse() {
     
     typeWriter(steps[currentStep].response, aishaReply, () => {
         if (currentStep === 1) {
-            budget = 100;
+            // Set budget
         } else if (currentStep === 3) {
             togglePanel('mapPanel');
             if (!scanningStarted) {
@@ -214,7 +181,7 @@ function completeCheckout() {
             <p>Payment method: UMC card</p>
             <p>Name: Arav Sharma</p>
             <p>Eco-friendly bonus rewards: ${ecoRewards} points</p>
-            <button class="button" onclick="resetShopping()">Start New Shopping Session</button>
+            <button onclick="resetShopping()">Start New Shopping Session</button>
         `;
     }, 5000);
 }

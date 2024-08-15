@@ -5,51 +5,39 @@ body, html {
     padding: 0;
     height: 100%;
     font-family: 'Poppins', sans-serif;
-    background: #000;
+    background-color: #001a2c;
     color: #fff;
-    overflow: hidden;
 }
 
 .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto 1fr auto;
+    display: flex;
+    flex-direction: column;
     height: 100vh;
-    background: linear-gradient(135deg, #000, #1a1a2e);
 }
 
-.header {
-    grid-column: 1 / -1;
-    padding: 20px;
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(0, 255, 255, 0.1);
-    border-bottom: 1px solid #0ff;
-}
-
-.logo-container {
-    flex: 1;
-    display: flex;
-    justify-content: flex-start;
+    padding: 10px 20px;
+    background-color: rgba(0, 26, 44, 0.8);
 }
 
 .logo {
-    height: 50px;
+    height: 40px;
 }
 
-.cart-info {
-    flex: 1;
+.header-buttons button {
+    margin-left: 10px;
+}
+
+main {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-    font-weight: 700;
+    flex-grow: 1;
 }
 
 .aisha-container {
-    grid-column: 1;
-    grid-row: 2;
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,62 +45,56 @@ body, html {
 }
 
 .aisha {
-    width: 80%;
-    height: 80%;
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
     border-radius: 10px;
-    box-shadow: 0 0 50px #0ff;
+    box-shadow: 0 0 20px #00ffff;
 }
+
+.play-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(0, 255, 255, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    /* Make the button invisible but still functional */
+    opacity: 0;
+}
+
 
 .info-panel {
-    grid-column: 2;
-    grid-row: 2;
+    flex: 1;
     padding: 20px;
     overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    background: rgba(0, 255, 255, 0.05);
-    border-left: 1px solid #0ff;
+    border-left: 1px solid #00ffff;
 }
 
-.footer {
-    grid-column: 1 / -1;
-    padding: 20px;
+footer {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    background: rgba(0, 255, 255, 0.1);
-    border-top: 1px solid #0ff;
+    padding: 20px;
+    background-color: rgba(0, 26, 44, 0.8);
 }
 
-.button {
-    margin: 0 10px;
+button {
+    background-color: rgba(0, 255, 255, 0.2);
+    color: #00ffff;
+    border: 1px solid #00ffff;
     padding: 10px 20px;
-    background: rgba(0,255,255,0.1);
-    border: 1px solid #0ff;
-    color: #0ff;
-    cursor: pointer;
-    transition: all 0.3s ease;
     border-radius: 25px;
+    cursor: pointer;
     font-family: 'Poppins', sans-serif;
-    font-size: 16px;
+    transition: background-color 0.3s;
 }
 
-.button:hover {
-    background: rgba(0,255,255,0.3);
-}
-
-.voice-input {
-    display: flex;
-    align-items: center;
-}
-
-.voice-indicator {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #0ff;
-    margin-right: 10px;
-    display: none;
+button:hover {
+    background-color: rgba(0, 255, 255, 0.4);
 }
 
 .panel {
@@ -122,13 +104,23 @@ body, html {
     transform: translate(-50%, -50%);
     width: 80%;
     height: 80%;
-    background: rgba(0,0,0,0.9);
-    border: 1px solid #0ff;
+    background-color: rgba(0, 26, 44, 0.9);
+    border: 1px solid #00ffff;
     display: none;
     border-radius: 15px;
-    overflow: hidden;
-    z-index: 1000;
     padding: 20px;
+    z-index: 1000;
+}
+
+.close-panel {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
 }
 
 .store-map {
@@ -137,62 +129,21 @@ body, html {
     object-fit: contain;
 }
 
-.close-panel {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    color: #fff;
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.cart-item, .checkout-item {
-    margin-bottom: 10px;
-    padding: 5px;
-    border-bottom: 1px solid rgba(0,255,255,0.3);
-}
-
 .scanned-items {
     position: fixed;
-    bottom: 80px;
+    bottom: 20px;
     right: 20px;
-    background: rgba(0,0,0,0.7);
-    padding: 10px 20px;
-    border-radius: 25px;
-    border: 1px solid #0ff;
-    font-size: 16px;
-    opacity: 0;
-    transition: opacity 0.5s ease;
+    background-color: rgba(0, 26, 44, 0.8);
+    padding: 10px;
+    border-radius: 5px;
     max-width: 300px;
-    text-align: right;
+    opacity: 0;
+    transition: opacity 0.5s;
 }
 
 .prompt {
-    background: rgba(0, 255, 255, 0.1);
+    background-color: rgba(0, 255, 255, 0.1);
     border-radius: 10px;
     padding: 15px;
     margin-bottom: 15px;
-    font-size: 16px;
-    line-height: 1.4;
-}
-
-.listening-animation {
-    width: 50px;
-    height: 50px;
-    border: 3px solid #0ff;
-    border-radius: 50%;
-    animation: pulse 1s infinite ease-in-out;
-}
-
-@keyframes blink {
-    from, to { border-color: transparent }
-    50% { border-color: #0ff; }
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); opacity: 0.5; }
-    50% { transform: scale(1.2); opacity: 1; }
-    100% { transform: scale(1); opacity: 0.5; }
 }
